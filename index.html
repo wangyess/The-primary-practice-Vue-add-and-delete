@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>这个天才又来啦❤️</title>
+</head>
+<body>
+<div id="root">
+
+    <form @submit.prevent="add_user()">
+        <input type="text" placeholder="用户名" v-model="new_user.username">
+        <input type="text" placeholder="年龄" v-model="new_user.age">
+        <button type="submit"> +</button>
+    </form>
+    <!-- user就是对象本身  i就是对象所在的索引-->
+    <div v-for="(user,i) in user_list">
+        我叫{{user.username}}, 今年{{user.age}}啦!
+        <button @click="del(i,'b')"> X</button>
+        <button @click="updata(i,'e')">C</button>
+        <button @click="suc(i)"> √ </button>
+    </div>
+    <div v-for="(succ,i) in success_list" style="background-color: red;">
+        {{succ.username}} {{succ.age}}
+        <button @click="del(i,'a')"> X</button>
+        <button @click="updata(i,'c')">C</button>
+        <button @click="sucr(i)"> √ </button>
+    </div>
+</div>
+
+
+<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
