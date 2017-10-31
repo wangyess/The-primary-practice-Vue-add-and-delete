@@ -8,25 +8,30 @@
     <title>这个天才又来啦❤️</title>
 </head>
 <body>
+<!--这里要定义一个根元素  用vue 这样做会避免一些不必要要的问题-->
 <div id="root">
-
-    <form @submit.prevent="add_user()">
-        <input type="text" placeholder="用户名" v-model="new_user.username">
-        <input type="text" placeholder="年龄" v-model="new_user.age">
-        <button type="submit"> +</button>
+    <!--定义一个表单并且给这个表单添加事件-->
+    <form @submit.prevent="add_task()">
+        <input type="text" placeholder="将要添加的任务" v-model="new_list.task_name">
+        <button type="submit">+</button>
     </form>
-    <!-- user就是对象本身  i就是对象所在的索引-->
-    <div v-for="(user,i) in user_list">
-        我叫{{user.username}}, 今年{{user.age}}啦!
-        <button @click="del(i,'b')"> X</button>
-        <button @click="updata(i,'e')">C</button>
-        <button @click="suc(i)"> √ </button>
-    </div>
-    <div v-for="(succ,i) in success_list" style="background-color: red;">
-        {{succ.username}} {{succ.age}}
+    <p>未完成</p>
+    <!--在定义一个div 用来装遍历的结果-->
+    <div v-for="(item_task,i) in task_list" style="color: #5a5a5a;margin-top: 20px;">
+        任务{{item_task.id}}:&nbsp; &nbsp; &nbsp; &nbsp;{{item_task.task_name}}&nbsp; &nbsp; &nbsp; &nbsp;
+        <!--这里多传一个字符串 参数  以便于后面的 判断这个是哪个数组里面的删除-->
         <button @click="del(i,'a')"> X</button>
-        <button @click="updata(i,'c')">C</button>
-        <button @click="sucr(i)"> √ </button>
+        <button @click="updata(i,'f')">G</button>
+        <button @click="success__task(i,'m')">√</button>
+    </div>
+    <!--因为有一个任务完成事件所以要 在定义一个div 把完成的 放到这个里面-->
+    <!--还要在定义一个数组  把完成的放到这个数组中  之后遍历这个数组-->
+    <p>完成</p>
+    <div v-for="(success_1,i) in success_task " style="color: #b6b6b6;margin-top: 5px;">
+        任务{{success_1.id }}:&nbsp; &nbsp; &nbsp; &nbsp;{{success_1.task_name}}&nbsp; &nbsp; &nbsp; &nbsp;
+        <button @click="del(i,'b')"> X</button>
+        <button @click="updata(i,'g')">G</button>
+        <button @click="success__task(i,'n')">√</button>
     </div>
 </div>
 
